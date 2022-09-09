@@ -24,6 +24,7 @@
 
 		Clicked ID is :<a id="clicked"></a><br>
 		Current Player:<a id="current">?</a><br>
+		Winner : <a id="winner">?</a>
 <br>
 
 <table border=1>
@@ -44,7 +45,7 @@
 <tbody>
   <tr>
     <td >A</td>
-    <td ><input type="button" id="A1" onClick="checkID()" class="idle" value=" "></td>
+    <td ><input type="button" id="A1" onClick="checkID()" class="idle" value=" " ></td>
     <td ><input type="button" id="A2" onClick="checkID()" class="idle" value=" "></td>
     <td ><input type="button" id="A3" onClick="checkID()" class="idle" value=" "></td>
   </tr>
@@ -78,6 +79,19 @@
 		// C2 = 7
 		// C3 = 8		
 		
+		
+		function disableAll()
+		{
+		   document.getElementById("A1").disabled=true;
+		   document.getElementById("A2").disabled=true;
+		   document.getElementById("A3").disabled=true;
+		   document.getElementById("B1").disabled=true;
+		   document.getElementById("B2").disabled=true;
+		   document.getElementById("B3").disabled=true;
+		   document.getElementById("C1").disabled=true;
+		   document.getElementById("C2").disabled=true;
+		   document.getElementById("C3").disabled=true;
+		}
 	
 		function checkWinner(val)
 		{
@@ -87,7 +101,8 @@
 				((board[0]==board[3])&&(board[0]==board[6]))||((board[1]==board[4])&&(board[1]==board[7]))||((board[2]==board[5])&&(board[2]==board[8])) ||
 				((board[0]==board[4])&&(board[0]==board[8]))||((board[2]==board[4])&&(board[2]==board[6]))
 				)								
-				{alert("winner is "+val);}
+				{document.getElementById("winner").innerHTML=val;
+				 disableAll();}
 			//check draw condition?			
 		}
 		
